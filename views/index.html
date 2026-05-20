@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BayMaster - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/Assets/abp-logo.svg" alt="ABP Induction logo">
+        <h1>BayMaster</h1>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      </div>
+      <nav class="nav-menu" id="primary-nav">
+        <ul>
+          <li>
+            <a href="/" class="active">
+              <span class="nav-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false">
+              <span class="nav-icon"><i class="fa-solid fa-warehouse" aria-hidden="true"></i></span>
+              <span>Bays</span>
+              <span class="chevron">▾</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/bay1">Bay 1</a></li>
+              <li><a href="/bay2">Bay 2</a></li>
+              <li><a href="/bay3">Bay 3</a></li>
+              <li><a href="/bay4">Bay 4</a></li>
+              <li><a href="/bay5">Bay 5</a></li>
+              <li><a href="/bay6">Bay 6</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/manage">
+              <span class="nav-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+              <span>Manage Bays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/equipment">
+              <span class="nav-icon"><i class="fa-solid fa-toolbox" aria-hidden="true"></i></span>
+              <span>Equipment</span>
+            </a>
+          </li>
+          <li>
+            <a href="/delays">
+              <span class="nav-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
+              <span>Delays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/finished-projects">
+              <span class="nav-icon"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></span>
+              <span>Finished Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="/job-costing">
+              <span class="nav-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
+              <span>Job Costing</span>
+            </a>
+          </li>
+          <li>
+            <a href="/preplanner">
+              <span class="nav-icon"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></span>
+              <span>Pre-Planner</span>
+            </a>
+          </li>
+          <li>
+            <a href="/mobile">
+              <span class="nav-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span>
+              <span>Mobile Upload</span>
+            </a>
+          </li>
+          <li>
+            <a href="/gallery">
+              <span class="nav-icon"><i class="fa-regular fa-images" aria-hidden="true"></i></span>
+              <span>Media Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a href="/visitors">
+              <span class="nav-icon"><i class="fa-regular fa-clipboard" aria-hidden="true"></i></span>
+              <span>Visitors Log</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Page Header -->
+      <div class="modern-page-header">
+        <div class="page-title-section">
+          <h1 class="page-title">
+            <i class="fas fa-tachometer-alt"></i>
+            BayMaster Dashboard
+          </h1>
+          <p class="page-subtitle">Monitor and manage all bay operations in real-time</p>
+        </div>
+        <div class="quick-stats">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-industry"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number" id="active-bays">6</span>
+              <span class="stat-label">Active Bays</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number" id="active-technicians">0</span>
+              <span class="stat-label">Technicians</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number" id="active-projects">0</span>
+              <span class="stat-label">Active Projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bay Status Overview -->
+      <div class="section-header">
+        <h2><i class="fas fa-building"></i> Bay Status Overview</h2>
+        <p>Real-time status of all manufacturing bays</p>
+      </div>
+      <div class="quadrant-container" id="bay-status-grid">
+        <!-- Bays will be dynamically added -->
+      </div>
+
+      <!-- Project Management Section -->
+      <div class="section-header">
+        <h2><i class="fas fa-tasks"></i> Project Management</h2>
+        <p>Assign and track direct projects to technicians</p>
+      </div>
+      <div class="project-management-container">
+        <section class="direct-assign-section" id="direct-assign-section">
+          <div class="section-card">
+            <div class="card-header">
+              <h3><i class="fas fa-user-plus"></i> Assign New Project</h3>
+              <p>Directly assign a project to a technician</p>
+            </div>
+            <form id="direct-assign-form" class="modern-form">
+              <div class="form-group">
+                <label for="direct-project-name">
+                  <i class="fas fa-project-diagram"></i> Project Name
+                </label>
+                <input type="text" id="direct-project-name" required placeholder="Enter project name">
+              </div>
+              <div class="form-group">
+                <label for="direct-tech-select">
+                  <i class="fas fa-user"></i> Technician
+                </label>
+                <select id="direct-tech-select" required>
+                  <option value="">Select technician</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="direct-bay-select">
+                  <i class="fas fa-warehouse"></i> Assign to Bay
+                </label>
+                <select id="direct-bay-select" required>
+                  <option value="">Loading bays...</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="direct-project-start">
+                    <i class="fas fa-clock"></i> Start Time
+                  </label>
+                  <input type="datetime-local" id="direct-project-start" required>
+                </div>
+                <div class="form-group">
+                  <label for="direct-project-end">
+                    <i class="fas fa-clock"></i> End Time
+                  </label>
+                  <input type="datetime-local" id="direct-project-end" required>
+                </div>
+              </div>
+              <button type="submit" class="btn-primary">
+                <i class="fas fa-plus"></i> Assign Project
+              </button>
+            </form>
+            <div id="direct-assign-result" class="result-message"></div>
+          </div>
+        </section>
+        <section class="direct-project-list-section" id="direct-project-list-section">
+          <div class="section-card">
+            <div class="card-header">
+              <h3><i class="fas fa-list"></i> Active Direct Projects</h3>
+              <p>Current projects assigned to technicians</p>
+            </div>
+            <div class="project-list-content" id="direct-project-list">
+              <!-- Direct projects will be loaded here -->
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Notes Section -->
+      <div class="section-header">
+        <h2><i class="fas fa-sticky-note"></i> Project Notes</h2>
+        <p>Add and manage project notes and reminders</p>
+      </div>
+      <div class="pinboard" id="pinboard">
+        <button class="add-note-btn modern-btn" id="add-note">
+          <i class="fas fa-plus"></i> Add Sticky Note
+        </button>
+        <div class="note-grid" id="note-grid"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿@import "tailwindcss";
+
+:root {
+  --primary: #f47f4a;
+  --primary-dark: #f15f32;
+  --primary-light: #ffa878;
+  --bg-warm: #fff7f2;
+  --bg-warm-alt: #fff0e6;
+  --border-warm: #ffe3d2;
+  --bay-1: #f47f4a;
+  --bay-2: #10b981;
+  --bay-3: #f59e0b;
+  --bay-4: #ef4444;
+  --bay-5: #8b5cf6;
+  --bay-6: #ec4899;
+  --bay-ext: #6b7280;
+}
+
+body {
+  background-color: var(--bg-warm);
+  color: #1f1f1f;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--bg-warm-alt);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #dfc8b8;
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #c9a894;
+}
+
+.bay-block-1 { background-color: var(--bay-1); }
+.bay-block-2 { background-color: var(--bay-2); }
+.bay-block-3 { background-color: var(--bay-3); }
+.bay-block-4 { background-color: var(--bay-4); }
+.bay-block-5 { background-color: var(--bay-5); }
+.bay-block-6 { background-color: var(--bay-6); }
+.bay-block-ext { background-color: var(--bay-ext); }
+
+.dragging {
+  @apply opacity-60 ring-2 ring-orange-400 ring-offset-2;
+}
+
+.conflict-tech {
+  @apply ring-2 ring-red-500;
+}
+.conflict-bay {
+  @apply ring-2 ring-amber-500;
+}

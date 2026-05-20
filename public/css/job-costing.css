@@ -1,0 +1,166 @@
+.job-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.job-page-header h1 {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.job-page-header p {
+  color: #555;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: #f15f32;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #fff0e6;
+  color: #8c3a19;
+}
+
+.btn-danger {
+  background: #b42318;
+  color: #fff;
+}
+
+.job-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.job-card h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.grid-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid #dedede;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+.sheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+
+.sheet-table th,
+.sheet-table td {
+  border: 1px solid #ececec;
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.sheet-table th {
+  background: #f5f5f5;
+}
+
+.toolbar-row {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+  align-items: center;
+}
+
+.toolbar-row input,
+.toolbar-row select {
+  max-width: 220px;
+}
+
+.inline-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.inline-check input {
+  width: auto;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.summary-grid div {
+  padding: 8px;
+  border-radius: 8px;
+  background: #fff7f2;
+  font-weight: 600;
+}
+
+#techHoursWarning.warn {
+  background: #ffebe9;
+  color: #b42318;
+}
+
+@media (max-width: 1200px) {
+  .grid-main {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+  }
+}

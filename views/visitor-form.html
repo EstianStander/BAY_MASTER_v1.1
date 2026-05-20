@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BayMaster - Visitor Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/visitors.css?v=20260226a">
+</head>
+<body class="visitors-page">
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/Assets/abp-logo.svg" alt="ABP Induction logo">
+        <h1>BayMaster</h1>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      </div>
+      <nav class="nav-menu" id="primary-nav">
+        <ul>
+          <li>
+            <a href="/">
+              <span class="nav-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false">
+              <span class="nav-icon"><i class="fa-solid fa-warehouse" aria-hidden="true"></i></span>
+              <span>Bays</span>
+              <span class="chevron">▾</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/bay1">Bay 1</a></li>
+              <li><a href="/bay2">Bay 2</a></li>
+              <li><a href="/bay3">Bay 3</a></li>
+              <li><a href="/bay4">Bay 4</a></li>
+              <li><a href="/bay5">Bay 5</a></li>
+              <li><a href="/bay6">Bay 6</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/manage">
+              <span class="nav-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+              <span>Manage Bays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/equipment">
+              <span class="nav-icon"><i class="fa-solid fa-toolbox" aria-hidden="true"></i></span>
+              <span>Equipment</span>
+            </a>
+          </li>
+          <li>
+            <a href="/delays">
+              <span class="nav-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
+              <span>Delays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/finished-projects">
+              <span class="nav-icon"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></span>
+              <span>Finished Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="/job-costing">
+              <span class="nav-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
+              <span>Job Costing</span>
+            </a>
+          </li>
+          <li>
+            <a href="/preplanner">
+              <span class="nav-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span>
+              <span>Preplanner</span>
+            </a>
+          </li>
+          <li>
+            <a href="/mobile">
+              <span class="nav-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span>
+              <span>Mobile Upload</span>
+            </a>
+          </li>
+          <li>
+            <a href="/gallery">
+              <span class="nav-icon"><i class="fa-regular fa-images" aria-hidden="true"></i></span>
+              <span>Media Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a href="/visitors">
+              <span class="nav-icon"><i class="fa-regular fa-clipboard" aria-hidden="true"></i></span>
+              <span>Visitors Log</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-shell visitor-shell">
+        <div class="page-header">
+          <h1 class="page-title">
+            <i class="fas fa-user"></i>
+            Visitor Form
+          </h1>
+          <p class="page-subtitle">Quick visitor check-in with signature.</p>
+        </div>
+
+        <section class="panel visitor-form-panel">
+          <form class="modern-form visitor-form" id="visitor-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="induction-date">Date</label>
+                <input type="date" id="induction-date" name="induction_date" required>
+              </div>
+            </div>
+
+            <section class="form-section visitor-details-section">
+              <div class="section-header-inline">
+                <h3>Visitor Details</h3>
+              </div>
+              <div class="form-row visitor-details-grid">
+                <div class="form-group">
+                  <label for="visitor-company">Company</label>
+                  <input type="text" id="visitor-company" name="company" required>
+                </div>
+                <div class="form-group">
+                  <label for="visitor-contact">Contact No</label>
+                  <input type="tel" id="visitor-contact" name="contact_no" required>
+                </div>
+              </div>
+              <div class="form-row visitor-details-grid">
+                <div class="form-group">
+                  <label for="visitor-name">Name Surname</label>
+                  <input type="text" id="visitor-name" name="name" required>
+                </div>
+              </div>
+              <div class="signature-block visitor-signature-block">
+                <div>
+                  <label for="signature-pad">Signature (stylus supported)</label>
+                  <div class="signature-pad">
+                    <canvas id="signature-pad" width="640" height="220" aria-label="Signature pad"></canvas>
+                  </div>
+                  <input type="hidden" id="signature-data" name="signature_data">
+                </div>
+                <div class="signature-actions">
+                  <button type="button" class="btn-primary" id="signature-clear">Clear Signature</button>
+                  <p class="signature-help">Use your finger or stylus to sign.</p>
+                </div>
+              </div>
+            </section>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Submit Delivery</button>
+              <div class="result-message" id="visitor-form-status" aria-live="polite"></div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/visitor-form.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

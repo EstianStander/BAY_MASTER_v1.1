@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BayMaster - Workshop Visitor Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/visitors.css?v=20260226a">
+</head>
+<body class="workshop-form-page">
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/Assets/abp-logo.svg" alt="ABP Induction logo">
+        <h1>BayMaster</h1>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      </div>
+      <nav class="nav-menu" id="primary-nav">
+        <ul>
+          <li>
+            <a href="/">
+              <span class="nav-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false">
+              <span class="nav-icon"><i class="fa-solid fa-warehouse" aria-hidden="true"></i></span>
+              <span>Bays</span>
+              <span class="chevron">▾</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/bay1">Bay 1</a></li>
+              <li><a href="/bay2">Bay 2</a></li>
+              <li><a href="/bay3">Bay 3</a></li>
+              <li><a href="/bay4">Bay 4</a></li>
+              <li><a href="/bay5">Bay 5</a></li>
+              <li><a href="/bay6">Bay 6</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/manage">
+              <span class="nav-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+              <span>Manage Bays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/equipment">
+              <span class="nav-icon"><i class="fa-solid fa-toolbox" aria-hidden="true"></i></span>
+              <span>Equipment</span>
+            </a>
+          </li>
+          <li>
+            <a href="/delays">
+              <span class="nav-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
+              <span>Delays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/finished-projects">
+              <span class="nav-icon"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></span>
+              <span>Finished Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="/job-costing">
+              <span class="nav-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
+              <span>Job Costing</span>
+            </a>
+          </li>
+          <li>
+            <a href="/preplanner">
+              <span class="nav-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span>
+              <span>Preplanner</span>
+            </a>
+          </li>
+          <li>
+            <a href="/mobile">
+              <span class="nav-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span>
+              <span>Mobile Upload</span>
+            </a>
+          </li>
+          <li>
+            <a href="/gallery">
+              <span class="nav-icon"><i class="fa-regular fa-images" aria-hidden="true"></i></span>
+              <span>Media Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a href="/visitors">
+              <span class="nav-icon"><i class="fa-regular fa-clipboard" aria-hidden="true"></i></span>
+              <span>Visitors Log</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-shell visitor-shell">
+        <div class="page-header">
+          <h1 class="page-title">
+            <i class="fas fa-hard-hat"></i>
+            Workshop Visitor Form
+          </h1>
+          <p class="page-subtitle">Full induction required for workshop access.</p>
+        </div>
+
+        <section class="panel visitor-form-panel">
+          <form class="modern-form visitor-form" id="visitor-induction-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="induction-date">Date</label>
+                <input type="date" id="induction-date" name="induction_date" required>
+              </div>
+              <div class="form-group">
+                <label for="induction-valid-until">Valid Until</label>
+                <input type="date" id="induction-valid-until" name="valid_until" required>
+              </div>
+            </div>
+
+            <div class="form-divider" aria-hidden="true"></div>
+
+            <div class="visitor-grid">
+              <section class="form-section">
+                <div class="section-header-inline">
+                  <h3>Personal Protective Equipment</h3>
+                  <p>Mark what is supplied by the visitor or loaned on site.</p>
+                </div>
+                <div class="table-card">
+                  <table class="form-table" aria-label="Personal protective equipment">
+                    <thead>
+                      <tr>
+                        <th>Item</th>
+                        <th>Own</th>
+                        <th>Loan</th>
+                        <th>Mandatory</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Safety Helmet</td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_helmet_own"> Own</label></td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_helmet_loan"> Loan</label></td>
+                        <td class="ppe-mandatory">Yes</td>
+                      </tr>
+                      <tr>
+                        <td>Safety Boots</td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_boots_own"> Own</label></td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_boots_loan"> Loan</label></td>
+                        <td class="ppe-mandatory">Yes</td>
+                      </tr>
+                      <tr>
+                        <td>Overalls</td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_overalls_own"> Own</label></td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_overalls_loan"> Loan</label></td>
+                        <td class="ppe-mandatory">Yes</td>
+                      </tr>
+                      <tr>
+                        <td>Eye Protection</td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_eye_own"> Own</label></td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_eye_loan"> Loan</label></td>
+                        <td class="ppe-mandatory">Yes</td>
+                      </tr>
+                      <tr>
+                        <td>Hearing Protection</td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_hearing_own"> Own</label></td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_hearing_loan"> Loan</label></td>
+                        <td class="ppe-mandatory">Yes</td>
+                      </tr>
+                      <tr>
+                        <td>Gloves</td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_gloves_own"> Own</label></td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_gloves_loan"> Loan</label></td>
+                        <td class="ppe-mandatory">Yes</td>
+                      </tr>
+                      <tr>
+                        <td>Safety Harness</td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_harness_own"> Own</label></td>
+                        <td><label class="table-choice"><input type="checkbox" name="ppe_harness_loan"> Loan</label></td>
+                        <td class="ppe-mandatory">Yes</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <label class="ppe-training">
+                  <input type="checkbox" name="ppe_heights_training">
+                  Proof of heights training (mandatory above 1.5m)
+                </label>
+              </section>
+
+              <section class="form-section">
+                <div class="section-header-inline">
+                  <h3>Liability Declaration</h3>
+                </div>
+                <div class="declaration-box">
+                  <p>The attached site emergency evacuation procedure has been explained to me and I understand it. I have also read and understand the site SHE induction (general rules) given to me.</p>
+                  <p>I am also aware that as per the OHS Act no 85 of 1993, I am legally liable for my own safety and of the safety of the people working with me. I waive all rights I may have against ABP Induction Furnace or their client or employers of whatever nature, for any loss, damage and or injury I may suffer on this site.</p>
+                </div>
+              </section>
+
+              <section class="form-section">
+                <div class="section-header-inline">
+                  <h3>Medical Declaration</h3>
+                  <p>Do you suffer from any of the following conditions?</p>
+                </div>
+                <div class="table-card">
+                  <table class="form-table" aria-label="Medical conditions">
+                    <thead>
+                      <tr>
+                        <th>Condition</th>
+                        <th>Yes</th>
+                        <th>No</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Diabetes</td>
+                        <td><label class="table-choice"><input type="radio" name="medical_diabetes" value="yes" required> Yes</label></td>
+                        <td><label class="table-choice"><input type="radio" name="medical_diabetes" value="no" required> No</label></td>
+                      </tr>
+                      <tr>
+                        <td>Epilepsy</td>
+                        <td><label class="table-choice"><input type="radio" name="medical_epilepsy" value="yes" required> Yes</label></td>
+                        <td><label class="table-choice"><input type="radio" name="medical_epilepsy" value="no" required> No</label></td>
+                      </tr>
+                      <tr>
+                        <td>Hypertension</td>
+                        <td><label class="table-choice"><input type="radio" name="medical_hypertension" value="yes" required> Yes</label></td>
+                        <td><label class="table-choice"><input type="radio" name="medical_hypertension" value="no" required> No</label></td>
+                      </tr>
+                      <tr>
+                        <td>Tuberculosis</td>
+                        <td><label class="table-choice"><input type="radio" name="medical_tuberculosis" value="yes" required> Yes</label></td>
+                        <td><label class="table-choice"><input type="radio" name="medical_tuberculosis" value="no" required> No</label></td>
+                      </tr>
+                      <tr>
+                        <td>Asthma</td>
+                        <td><label class="table-choice"><input type="radio" name="medical_asthma" value="yes" required> Yes</label></td>
+                        <td><label class="table-choice"><input type="radio" name="medical_asthma" value="no" required> No</label></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="section-header-inline">
+                  <h3>Please declare the following</h3>
+                </div>
+                <div class="table-card">
+                  <table class="form-table" aria-label="Medical declarations">
+                    <thead>
+                      <tr>
+                        <th>Declaration</th>
+                        <th>Yes</th>
+                        <th>No</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Is your vision (eyesight) good?</td>
+                        <td><label class="table-choice"><input type="radio" name="declare_vision" value="yes" required> Yes</label></td>
+                        <td><label class="table-choice"><input type="radio" name="declare_vision" value="no" required> No</label></td>
+                      </tr>
+                      <tr>
+                        <td>Is your hearing good?</td>
+                        <td><label class="table-choice"><input type="radio" name="declare_hearing" value="yes" required> Yes</label></td>
+                        <td><label class="table-choice"><input type="radio" name="declare_hearing" value="no" required> No</label></td>
+                      </tr>
+                      <tr>
+                        <td>Are you dependent on drugs?</td>
+                        <td><label class="table-choice"><input type="radio" name="declare_drugs" value="yes" required> Yes</label></td>
+                        <td><label class="table-choice"><input type="radio" name="declare_drugs" value="no" required> No</label></td>
+                      </tr>
+                      <tr>
+                        <td>Are you dependent on alcohol?</td>
+                        <td><label class="table-choice"><input type="radio" name="declare_alcohol" value="yes" required> Yes</label></td>
+                        <td><label class="table-choice"><input type="radio" name="declare_alcohol" value="no" required> No</label></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="form-section">
+                <div class="section-header-inline">
+                  <h3>General Rules</h3>
+                </div>
+                <ol class="rules-list">
+                  <li>Be aware and on the lookout for site SHE hazards, overhead work and mobile machines.</li>
+                  <li>Remain with the person escorting you.</li>
+                  <li>Obey all instructions from that person.</li>
+                  <li>Do not remove any samples or equipment from site.</li>
+                  <li>Obey all symbolic SHE signs.</li>
+                  <li>Do not interfere with workers or any other site staff.</li>
+                  <li>No nerve stimulating substances or alcohol are allowed on site.</li>
+                  <li>You are not allowed to take any photos unless you have been given permission by management.</li>
+                </ol>
+              </section>
+            </div>
+
+            <div class="form-divider" aria-hidden="true"></div>
+
+            <section class="form-section visitor-details-section">
+              <div class="section-header-inline">
+                <h3>Visitor Details</h3>
+              </div>
+              <div class="form-row visitor-details-grid">
+                <div class="form-group">
+                  <label for="visitor-company">Company</label>
+                  <input type="text" id="visitor-company" name="company" required>
+                </div>
+                <div class="form-group">
+                  <label for="visitor-contact">Contact No</label>
+                  <input type="tel" id="visitor-contact" name="contact_no" required>
+                </div>
+              </div>
+              <div class="form-row visitor-details-grid">
+                <div class="form-group">
+                  <label for="visitor-name">Name Surname</label>
+                  <input type="text" id="visitor-name" name="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="visitor-id">ID / Passport No</label>
+                  <input type="text" id="visitor-id" name="id_number" required>
+                </div>
+              </div>
+              <div class="signature-block visitor-signature-block">
+                <div>
+                  <label for="signature-pad">Signature (stylus supported)</label>
+                  <div class="signature-pad">
+                    <canvas id="signature-pad" width="640" height="220" aria-label="Signature pad"></canvas>
+                  </div>
+                  <input type="hidden" id="signature-data" name="signature_data">
+                </div>
+                <div class="signature-actions">
+                  <button type="button" class="btn-primary" id="signature-clear">Clear Signature</button>
+                  <p class="signature-help">Use your finger or stylus to sign.</p>
+                </div>
+              </div>
+            </section>
+
+            <div class="form-divider" aria-hidden="true"></div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Submit Workshop Induction</button>
+              <span class="form-hint">All fields are required for workshop visitors.</span>
+              <div class="result-message" id="visitor-form-status" aria-live="polite"></div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/workshop-visitor-form.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

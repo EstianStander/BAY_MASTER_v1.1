@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-labelledby="title desc">
+  <title id="title">ABP Induction Logo</title>
+  <desc id="desc">Stylized ABP Induction wordmark in ABP orange and charcoal</desc>
+  <rect width="320" height="180" fill="#ffffff"/>
+  <g fill="#f47f4a" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="120" letter-spacing="4">
+    <text x="10" y="115">ABP</text>
+  </g>
+  <g fill="#262626" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="42" letter-spacing="2">
+    <text x="22" y="166">INDUCTION</text>
+  </g>
+</svg>

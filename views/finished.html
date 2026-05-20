@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BayMaster - Finished Projects</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/Assets/abp-logo.svg" alt="ABP Induction logo">
+        <h1>BayMaster</h1>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      </div>
+      <nav class="nav-menu" id="primary-nav">
+        <ul>
+          <li>
+            <a href="/">
+              <span class="nav-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false">
+              <span class="nav-icon"><i class="fa-solid fa-warehouse" aria-hidden="true"></i></span>
+              <span>Bays</span>
+              <span class="chevron">▾</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/bay1">Bay 1</a></li>
+              <li><a href="/bay2">Bay 2</a></li>
+              <li><a href="/bay3">Bay 3</a></li>
+              <li><a href="/bay4">Bay 4</a></li>
+              <li><a href="/bay5">Bay 5</a></li>
+              <li><a href="/bay6">Bay 6</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/manage">
+              <span class="nav-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+              <span>Manage Bays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/equipment">
+              <span class="nav-icon"><i class="fa-solid fa-toolbox" aria-hidden="true"></i></span>
+              <span>Equipment</span>
+            </a>
+          </li>
+          <li>
+            <a href="/delays">
+              <span class="nav-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
+              <span>Delays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/finished-projects" class="active">
+              <span class="nav-icon"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></span>
+              <span>Finished Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="/job-costing">
+              <span class="nav-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
+              <span>Job Costing</span>
+            </a>
+          </li>
+          <li>
+            <a href="/preplanner">
+              <span class="nav-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span>
+              <span>Preplanner</span>
+            </a>
+          </li>
+          <li>
+            <a href="/mobile">
+              <span class="nav-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span>
+              <span>Mobile Upload</span>
+            </a>
+          </li>
+          <li>
+            <a href="/gallery">
+              <span class="nav-icon"><i class="fa-regular fa-images" aria-hidden="true"></i></span>
+              <span>Media Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a href="/visitors">
+              <span class="nav-icon"><i class="fa-regular fa-clipboard" aria-hidden="true"></i></span>
+              <span>Visitors Log</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-shell">
+        <div class="page-header">
+          <h1 class="page-title">
+            <i class="fas fa-check-circle"></i>
+            Finished Projects
+          </h1>
+          <p class="page-subtitle">Review everything that has been completed in the bays.</p>
+          <div class="finished-stats">
+            <div class="stat-card subtle">
+              <div class="stat-icon"><i class="fas fa-clipboard-check"></i></div>
+              <div class="stat-info">
+                <span class="stat-number" id="finished-total">0</span>
+                <span class="stat-label">Total Finished</span>
+              </div>
+            </div>
+            <div class="stat-card subtle">
+              <div class="stat-icon"><i class="fas fa-route"></i></div>
+              <div class="stat-info">
+                <span class="stat-number" id="finished-direct-total">0</span>
+                <span class="stat-label">Moved to Direct</span>
+              </div>
+            </div>
+            <div class="stat-card subtle">
+              <div class="stat-icon"><i class="fas fa-hourglass-half"></i></div>
+              <div class="stat-info">
+                <span class="stat-number" id="finished-delay-total">0</span>
+                <span class="stat-label">Had Delays</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="panel">
+          <div class="finished-toolbar">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="search" id="finished-search" placeholder="Search by project, team, or bay">
+            </div>
+            <div class="filter-group">
+              <label for="finished-sort">Sort by</label>
+              <select id="finished-sort">
+                <option value="recent">Most recent</option>
+                <option value="oldest">Oldest</option>
+                <option value="bay">Bay number</option>
+                <option value="name">Project name</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="finished-list" class="finished-grid">
+            <div class="loading-card">Loading finished projects...</div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="detail-modal" id="finished-detail-modal" aria-hidden="true">
+    <div class="detail-modal-backdrop" data-close="detail"></div>
+    <div class="detail-modal-content" role="dialog" aria-modal="true">
+      <div class="detail-modal-header">
+        <div>
+          <h2 id="detail-title">Finished Project</h2>
+          <p id="detail-subtitle"></p>
+        </div>
+        <button class="detail-close" data-close="detail">×</button>
+      </div>
+      <div class="detail-body">
+        <div class="detail-meta-grid" id="detail-meta"></div>
+        <div class="detail-section">
+          <h3>Pause History</h3>
+          <div id="detail-pauses" class="detail-list"></div>
+        </div>
+        <div class="detail-section">
+          <h3>Delay Reason</h3>
+          <p id="detail-delay"></p>
+        </div>
+        <div class="detail-section">
+          <h3>Notes</h3>
+          <div id="detail-notes" class="detail-list"></div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-header">
+            <h3>Project Media</h3>
+            <a class="detail-link" href="/gallery" target="_blank" rel="noopener">Open gallery</a>
+          </div>
+          <div id="detail-media-meta" class="detail-media-meta"></div>
+          <div id="detail-media" class="detail-media-grid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="finished-media-lightbox" class="media-lightbox" aria-hidden="true">
+    <div class="media-lightbox-backdrop" data-close="media-lightbox"></div>
+    <div class="media-lightbox-body" role="dialog" aria-modal="true">
+      <button class="media-lightbox-close" type="button" aria-label="Close" data-close="media-lightbox">×</button>
+      <img id="finished-lightbox-img" alt="Project media">
+      <video id="finished-lightbox-video" controls></video>
+    </div>
+  </div>
+
+  <script src="/js/finished-projects.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

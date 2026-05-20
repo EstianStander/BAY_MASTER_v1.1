@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BayMaster - Media Gallery</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .gallery-toolbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.9rem;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .gallery-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .gallery-filters label {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .gallery-filters input,
+    .gallery-filters select {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 0.5rem 0.7rem;
+      font-size: 0.9rem;
+      background: #fff;
+    }
+
+    .results-meta {
+      font-size: 0.85rem;
+      color: #6b7280;
+      text-align: right;
+    }
+
+    .gallery-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) minmax(320px, 2fr);
+      gap: 1.2rem;
+    }
+
+    .list-panel,
+    .detail-panel {
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      padding: 1.1rem;
+    }
+
+    .project-list {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .project-item {
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 0.7rem 0.8rem;
+      background: #fff;
+      cursor: pointer;
+      display: grid;
+      gap: 0.35rem;
+      transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-item.active {
+      border-color: #f97316;
+      box-shadow: 0 12px 24px rgba(249, 115, 22, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .project-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: #6b7280;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(249, 115, 22, 0.12);
+      color: #9a3412;
+      font-weight: 600;
+    }
+
+    .detail-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .detail-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+      margin-top: 0.4rem;
+    }
+
+    .action-button {
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      color: #0f172a;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+    }
+
+    .action-button.primary {
+      background: #f97316;
+      color: #fff;
+      border-color: #f97316;
+      box-shadow: 0 12px 24px rgba(249, 115, 22, 0.3);
+    }
+
+    .action-button.ghost {
+      background: #fff7ed;
+      border-color: #fdba74;
+      color: #9a3412;
+    }
+
+    .action-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .selection-count {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .detail-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .detail-subtitle {
+      color: #6b7280;
+      font-size: 0.85rem;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .media-phase-group {
+      margin-bottom: 1rem;
+    }
+
+    .media-phase-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      border-radius: 12px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .media-phase-header .media-phase-count {
+      font-weight: 600;
+      color: #7c2d12;
+    }
+
+    .media-tile {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0f172a;
+      position: relative;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.16);
+    }
+
+    .media-select {
+      position: absolute;
+      top: 0.55rem;
+      left: 0.55rem;
+      background: rgba(15, 23, 42, 0.72);
+      border-radius: 999px;
+      padding: 0.25rem 0.35rem;
+      z-index: 2;
+    }
+
+    .media-phase {
+      position: absolute;
+      right: 0.55rem;
+      bottom: 0.55rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .media-phase[data-phase="entry"] {
+      background: rgba(16, 185, 129, 0.85);
+    }
+
+    .media-phase[data-phase="progress"] {
+      background: rgba(59, 130, 246, 0.85);
+    }
+
+    .media-phase[data-phase="exit-delivery"] {
+      background: rgba(249, 115, 22, 0.85);
+    }
+
+    .media-phase[data-phase="unspecified"] {
+      background: rgba(100, 116, 139, 0.85);
+    }
+
+    .media-select input {
+      width: 18px;
+      height: 18px;
+      accent-color: #f97316;
+      cursor: pointer;
+    }
+
+    .media-tile img,
+    .media-tile video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .empty-state {
+      padding: 1rem 1.2rem;
+      background: #fff7ed;
+      border: 1px dashed #fdba74;
+      border-radius: 16px;
+      color: #9a3412;
+    }
+
+    @media (max-width: 900px) {
+      .gallery-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .results-meta { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/Assets/abp-logo.svg" alt="ABP Induction logo">
+        <h1>BayMaster</h1>
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li>
+            <a href="/">
+              <span class="nav-icon">🏠</span>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false">
+              <span class="nav-icon">🅱️</span>
+              <span>Bays</span>
+              <span class="chevron">▾</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/bay1">Bay 1</a></li>
+              <li><a href="/bay2">Bay 2</a></li>
+              <li><a href="/bay3">Bay 3</a></li>
+              <li><a href="/bay4">Bay 4</a></li>
+              <li><a href="/bay5">Bay 5</a></li>
+              <li><a href="/bay6">Bay 6</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/manage">
+              <span class="nav-icon">🛠️</span>
+              <span>Manage Bays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/equipment">
+              <span class="nav-icon">🧰</span>
+              <span>Equipment</span>
+            </a>
+          </li>
+          <li>
+            <a href="/delays">
+              <span class="nav-icon">⏳</span>
+              <span>Delays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/finished-projects">
+              <span class="nav-icon">✅</span>
+              <span>Finished Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="/mobile">
+              <span class="nav-icon">📱</span>
+              <span>Mobile Upload</span>
+            </a>
+          </li>
+          <li>
+            <a href="/gallery" class="active">
+              <span class="nav-icon">🖼️</span>
+              <span>Media Gallery</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="modern-page-header">
+        <div class="page-title-section">
+          <h1 class="page-title">
+            <i class="fas fa-images"></i>
+            Media Gallery
+          </h1>
+          <p class="page-subtitle">Browse photos and videos by project and bay</p>
+        </div>
+      </div>
+
+      <div class="gallery-toolbar">
+        <div class="gallery-filters">
+          <label for="bayFilter">Filter</label>
+          <select id="bayFilter">
+            <option value="all">All bays</option>
+            <option value="bay1">Bay 1</option>
+            <option value="bay2">Bay 2</option>
+            <option value="bay3">Bay 3</option>
+            <option value="bay4">Bay 4</option>
+            <option value="bay5">Bay 5</option>
+            <option value="bay6">Bay 6</option>
+            <option value="direct">Direct projects</option>
+          </select>
+          <label for="searchInput">Search</label>
+          <input id="searchInput" type="search" placeholder="Search project or technician" autocomplete="off" />
+        </div>
+        <div class="results-meta" id="resultsMeta">0 projects</div>
+      </div>
+
+      <div class="gallery-layout">
+        <section class="list-panel">
+          <strong>Projects</strong>
+          <div id="projectList" class="project-list"></div>
+        </section>
+
+        <section class="detail-panel">
+          <div id="detailView" class="empty-state">Select a project to view media.</div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/gallery.js"></script>
+</body>
+</html>

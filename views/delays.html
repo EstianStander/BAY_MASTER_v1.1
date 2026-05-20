@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BayMaster - Project Delays</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/Assets/abp-logo.svg" alt="ABP Induction logo">
+        <h1>BayMaster</h1>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      </div>
+      <nav class="nav-menu" id="primary-nav">
+        <ul>
+          <li>
+            <a href="/">
+              <span class="nav-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false">
+              <span class="nav-icon"><i class="fa-solid fa-warehouse" aria-hidden="true"></i></span>
+              <span>Bays</span>
+              <span class="chevron">▾</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/bay1">Bay 1</a></li>
+              <li><a href="/bay2">Bay 2</a></li>
+              <li><a href="/bay3">Bay 3</a></li>
+              <li><a href="/bay4">Bay 4</a></li>
+              <li><a href="/bay5">Bay 5</a></li>
+              <li><a href="/bay6">Bay 6</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/manage">
+              <span class="nav-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+              <span>Manage Bays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/equipment">
+              <span class="nav-icon"><i class="fa-solid fa-toolbox" aria-hidden="true"></i></span>
+              <span>Equipment</span>
+            </a>
+          </li>
+          <li>
+            <a href="/delays" class="active">
+              <span class="nav-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
+              <span>Delays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/finished-projects">
+              <span class="nav-icon"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></span>
+              <span>Finished Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="/job-costing">
+              <span class="nav-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
+              <span>Job Costing</span>
+            </a>
+          </li>
+          <li>
+            <a href="/preplanner">
+              <span class="nav-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span>
+              <span>Preplanner</span>
+            </a>
+          </li>
+          <li>
+            <a href="/mobile">
+              <span class="nav-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span>
+              <span>Mobile Upload</span>
+            </a>
+          </li>
+          <li>
+            <a href="/gallery">
+              <span class="nav-icon"><i class="fa-regular fa-images" aria-hidden="true"></i></span>
+              <span>Media Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a href="/visitors">
+              <span class="nav-icon"><i class="fa-regular fa-clipboard" aria-hidden="true"></i></span>
+              <span>Visitors Log</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-shell">
+        <div class="page-header">
+          <h1 class="page-title">
+            <i class="fas fa-exclamation-triangle"></i>
+            Project Delays Management
+          </h1>
+          <p class="page-subtitle">Manage project delays, update timelines, and track delay reasons</p>
+        </div>
+
+        <section class="panel">
+          <h2 class="panel-title">
+            <i class="fas fa-edit"></i>
+            Update Project Timeline & Delays
+          </h2>
+
+          <div class="delay-alert" style="margin-bottom:16px;">
+            <div class="stat-icon" style="width:48px;height:48px;">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div>
+              <h4 style="margin-bottom:6px; color:#c84d1c;">Delay Management Mode</h4>
+              <p style="color:#6b4d3d;">Use this page to update project timelines and document delay reasons for better project tracking and reporting.</p>
+            </div>
+          </div>
+
+          <form id="config-form">
+            <div class="form-grid">
+              <div>
+                <label for="bay" class="form-label">
+                  <i class="fas fa-warehouse"></i>
+                  Select Bay
+                </label>
+                <select id="bay" name="bay" class="form-select" required>
+                  <option value="">Choose a Bay</option>
+                  <option value="1">Bay 1</option>
+                  <option value="2">Bay 2</option>
+                  <option value="3">Bay 3</option>
+                  <option value="4">Bay 4</option>
+                  <option value="5">Bay 5</option>
+                  <option value="6">Bay 6</option>
+                </select>
+              </div>
+              <div>
+                <label for="project-name" class="form-label">
+                  <i class="fas fa-project-diagram"></i>
+                  Project Name
+                </label>
+                <input type="text" id="project-name" name="project-name" class="form-control" placeholder="Enter project name" required>
+              </div>
+              <div>
+                <label for="project-start" class="form-label">
+                  <i class="fas fa-play"></i>
+                  Project Start Date
+                </label>
+                <input type="datetime-local" id="project-start" name="project-start" class="form-control" required>
+              </div>
+              <div>
+                <label for="project-end" class="form-label">
+                  <i class="fas fa-stop"></i>
+                  Project End Date
+                </label>
+                <input type="datetime-local" id="project-end" name="project-end" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="delay-reason" class="form-label">
+                <i class="fas fa-exclamation-circle"></i>
+                Reason for Delay
+              </label>
+              <input type="text" id="delay-reason" name="delay-reason" class="form-control" placeholder="Enter detailed reason for the delay">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">
+                <i class="fas fa-users"></i>
+                Assign Team (select all that apply)
+              </label>
+              <div class="checkbox-group" id="technician-checkboxes"></div>
+              <div id="selected-technicians" class="selected-technicians">Selected: None</div>
+            </div>
+
+            <div class="tasks-section">
+              <h2 class="tasks-title">
+                <i class="fas fa-tasks"></i>
+                Project Tasks
+              </h2>
+              <div id="todo-container"></div>
+              <button type="button" id="add-todo" class="btn-custom btn-success">
+                <i class="fas fa-plus"></i>
+                Add Task
+              </button>
+            </div>
+
+            <div class="btn-row">
+              <button type="submit" class="btn-custom btn-primary">
+                <i class="fas fa-save"></i>
+                Save Configuration
+              </button>
+              <button type="button" id="clear-bay" class="btn-custom btn-danger">
+                <i class="fas fa-trash"></i>
+                Clear Bay
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel-title">
+            <i class="fas fa-info-circle"></i>
+            Current Bay Status & Delay Information
+          </h2>
+          <div id="project-info-container" class="info-card">
+            <p>Please select a bay to view details.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="password-modal">
+    <div class="modal-card">
+      <h3><i class="fas fa-lock"></i> Enter Password</h3>
+      <p>Admin actions require a password.</p>
+      <input type="password" id="password-input" class="form-control" placeholder="Password">
+      <div class="modal-actions">
+        <button class="btn-custom btn-ghost" data-close="password">Cancel</button>
+        <button class="btn-custom btn-primary" id="password-submit">Submit</button>
+      </div>
+      <p id="password-error" style="color:#b91c1c; margin-top:8px; display:none;">Incorrect password. Try again.</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="conflict-modal">
+    <div class="modal-card">
+      <h3><i class="fas fa-exclamation-triangle"></i> Conflict Detected</h3>
+      <div id="conflict-message"></div>
+      <div class="modal-actions">
+        <button class="btn-custom btn-ghost" data-close="conflict">Cancel</button>
+        <button class="btn-custom btn-primary" id="conflict-pause">Pause Conflicts & Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const PASSWORD = 'abpadmin1';
+    let technicians = [];
+
+    const form = document.getElementById('config-form');
+    const baySelect = document.getElementById('bay');
+    const technicianCheckboxes = document.getElementById('technician-checkboxes');
+    const selectedTechniciansDiv = document.getElementById('selected-technicians');
+    const todoContainer = document.getElementById('todo-container');
+    const addTodoButton = document.getElementById('add-todo');
+    const projectInfoContainer = document.getElementById('project-info-container');
+    const passwordModal = document.getElementById('password-modal');
+    const conflictModal = document.getElementById('conflict-modal');
+    const conflictMessage = document.getElementById('conflict-message');
+
+    const api = {
+      async allBays() {
+        const res = await fetch('/api/bays');
+        if (!res.ok) throw new Error('Failed to load bays');
+        return res.json();
+      },
+      async getBay(bayIndex) {
+        const res = await fetch(`/api/bays/${bayIndex + 1}`);
+        if (!res.ok) throw new Error('Failed to load bay');
+        return res.json();
+      },
+      async saveBay(bayIndex, payload) {
+        const res = await fetch(`/api/bays/${bayIndex + 1}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('Failed to save bay');
+        return res.json();
+      },
+      async clearBay(bayIndex) {
+        const res = await fetch(`/api/bays/${bayIndex + 1}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('Failed to clear bay');
+      },
+      async technicians() {
+        const res = await fetch('/api/technicians');
+        if (!res.ok) throw new Error('Failed to load technicians');
+        return res.json();
+      }
+    };
+
+    async function loadTechnicians() {
+      try {
+        technicians = await api.technicians();
+      } catch (err) {
+        console.error('Technician fetch failed, using fallback list', err);
+        technicians = ['David Mphalehle', 'Spha Mthembu', 'Bernard Maano', 'N Stanley Sebe', 'Sipho Zitha', 'Thinus Mostert', 'Johannes Loubser'];
+      }
+      renderTechnicians();
+      updateSelectedTechnicians();
+    }
+
+    function renderTechnicians() {
+      technicianCheckboxes.innerHTML = '';
+      technicians.forEach(item => {
+        const name = typeof item === 'string' ? item : item?.name;
+        if (!name) return;
+        const wrapper = document.createElement('label');
+        wrapper.className = 'checkbox-item';
+        wrapper.innerHTML = `
+          <input type="checkbox" name="responsible-person" value="${name}">
+          <span>${name}</span>
+        `;
+        technicianCheckboxes.appendChild(wrapper);
+      });
+    }
+
+    function updateSelectedTechnicians() {
+      const selected = Array.from(technicianCheckboxes.querySelectorAll('input:checked')).map(i => i.value);
+      selectedTechniciansDiv.textContent = selected.length ? `Selected: ${selected.join(', ')}` : 'Selected: None';
+    }
+
+    function addTodoRow(task = {}) {
+      const row = document.createElement('div');
+      row.className = 'todo-item';
+      row.innerHTML = `
+        <input type="text" class="todo-text form-control" placeholder="Task description" value="${task.text || ''}" required>
+        <input type="datetime-local" class="todo-deadline form-control" value="${task.deadline ? task.deadline : ''}" required>
+        <select class="todo-priority form-select" required>
+          <option value="high" ${task.priority === 'high' ? 'selected' : ''}>High (Red)</option>
+          <option value="medium" ${!task.priority || task.priority === 'medium' ? 'selected' : ''}>Medium (Orange)</option>
+          <option value="low" ${task.priority === 'low' ? 'selected' : ''}>Low (Green)</option>
+        </select>
+        <button type="button" class="remove-todo"><i class="fas fa-trash"></i></button>
+      `;
+      row.querySelector('.remove-todo').addEventListener('click', () => row.remove());
+      todoContainer.appendChild(row);
+    }
+
+    function clearTodos() { todoContainer.innerHTML = ''; }
+
+    function formatInputDate(value) {
+      return value ? new Date(value).toISOString().slice(0, 16) : '';
+    }
+
+    function fillForm(bayData) {
+      form.reset();
+      clearTodos();
+      if (!bayData) {
+        updateSelectedTechnicians();
+        return;
+      }
+      document.getElementById('project-name').value = bayData.projectName || '';
+      document.getElementById('project-start').value = formatInputDate(bayData.timer?.start);
+      document.getElementById('project-end').value = formatInputDate(bayData.timer?.end);
+      document.getElementById('delay-reason').value = bayData.delayReason || '';
+
+      const checkboxes = technicianCheckboxes.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(cb => {
+        cb.checked = bayData.assignedTeam?.includes(cb.value) || false;
+      });
+      updateSelectedTechnicians();
+
+      (bayData.tasks || []).forEach(task => addTodoRow({
+        text: task.text,
+        deadline: formatInputDate(task.deadline),
+        priority: task.priority
+      }));
+    }
+
+    function renderDetails(bayData) {
+      if (!bayData) {
+        projectInfoContainer.innerHTML = '<p>Please select a bay to view details.</p>';
+        return;
+      }
+      const tasks = (bayData.tasks || []).map(t => {
+        const priorityClass = t.priority || 'medium';
+        const deadline = t.deadline ? new Date(t.deadline).toLocaleString() : 'N/A';
+        return `<div class="task-chip ${priorityClass}"><span>${t.text}</span><span>${deadline}</span></div>`;
+      }).join('');
+
+      projectInfoContainer.innerHTML = `
+        <div class="info-grid">
+          <div><strong>Project:</strong><br>${bayData.projectName || 'None'}</div>
+          <div><strong>Timeline:</strong><br>${bayData.timer?.start ? new Date(bayData.timer.start).toLocaleString() : 'N/A'} - ${bayData.timer?.end ? new Date(bayData.timer.end).toLocaleString() : 'N/A'}</div>
+          <div><strong>Status:</strong><br><span class="badge ${bayData.paused ? 'paused' : 'active'}">${bayData.paused ? 'Paused' : 'Active'}</span></div>
+        </div>
+        <div style="margin-top:12px;"><strong>Team:</strong> ${bayData.assignedTeam?.length ? bayData.assignedTeam.join(', ') : 'Unassigned'}</div>
+        <div style="margin-top:12px;"><strong>Delay Reason:</strong> ${bayData.delayReason || 'None provided'}</div>
+        <div style="margin-top:12px;">
+          <strong>Tasks:</strong>
+          ${tasks || '<p>No tasks yet.</p>'}
+        </div>
+      `;
+    }
+
+    function getFormData() {
+      const bayIndex = parseInt(baySelect.value, 10) - 1;
+      const projectName = document.getElementById('project-name').value.trim();
+      const projectStart = document.getElementById('project-start').value;
+      const projectEnd = document.getElementById('project-end').value;
+      const delayReason = document.getElementById('delay-reason').value.trim();
+      const assignedTeam = Array.from(technicianCheckboxes.querySelectorAll('input:checked')).map(i => i.value);
+
+      const tasks = Array.from(todoContainer.querySelectorAll('.todo-item')).map(row => ({
+        text: row.querySelector('.todo-text').value,
+        deadline: row.querySelector('.todo-deadline').value,
+        priority: row.querySelector('.todo-priority').value
+      }));
+
+      return {
+        bayIndex,
+        payload: {
+          projectName,
+          assignedTeam,
+          timer: { start: projectStart, end: projectEnd },
+          tasks,
+          paused: false,
+          delayReason
+        }
+      };
+    }
+
+    function timesOverlap(aStart, aEnd, bStart, bEnd) {
+      if (!aStart || !aEnd || !bStart || !bEnd) return false;
+      return new Date(aStart) <= new Date(bEnd) && new Date(aEnd) >= new Date(bStart);
+    }
+
+    function findConflicts(bayIndex, newData, data) {
+      const overlaps = [];
+      data.forEach((bay, idx) => {
+        if (!bay || idx === bayIndex) return;
+        const sharesTech = bay.assignedTeam?.some(t => newData.assignedTeam.includes(t));
+        const overlap = timesOverlap(newData.timer.start, newData.timer.end, bay.timer?.start, bay.timer?.end);
+        if (sharesTech && overlap && !bay.paused) {
+          overlaps.push({ index: idx, bay });
+        }
+      });
+      return overlaps;
+    }
+
+    function showModal(modal) { modal.classList.add('active'); }
+    function hideModal(modal) { modal.classList.remove('active'); }
+
+    function askPassword(onSuccess) {
+      showModal(passwordModal);
+      const input = document.getElementById('password-input');
+      const error = document.getElementById('password-error');
+      input.value = '';
+      error.style.display = 'none';
+      input.focus();
+
+      function handleSubmit() {
+        if (input.value === PASSWORD) {
+          hideModal(passwordModal);
+          input.removeEventListener('keydown', onKey);
+          onSuccess();
+        } else {
+          error.style.display = 'block';
+        }
+      }
+      function onKey(e) { if (e.key === 'Enter') handleSubmit(); }
+      input.addEventListener('keydown', onKey);
+      document.getElementById('password-submit').onclick = handleSubmit;
+      passwordModal.querySelector('[data-close="password"]').onclick = () => hideModal(passwordModal);
+    }
+
+    function handleConflicts(conflicts, proceed) {
+      const list = conflicts.map(c => {
+        const start = c.bay.timer?.start ? new Date(c.bay.timer.start).toLocaleString() : 'N/A';
+        const end = c.bay.timer?.end ? new Date(c.bay.timer.end).toLocaleString() : 'N/A';
+        return `<p>Bay ${c.index + 1}: <strong>${c.bay.projectName || 'Untitled'}</strong><br><small>${start} - ${end}</small></p>`;
+      }).join('');
+      conflictMessage.innerHTML = `${list}<p>Pause conflicts and continue?</p>`;
+      showModal(conflictModal);
+      conflictModal.querySelector('[data-close="conflict"]').onclick = () => hideModal(conflictModal);
+      document.getElementById('conflict-pause').onclick = () => {
+        hideModal(conflictModal);
+        proceed(true);
+      };
+    }
+
+    async function loadAndRenderBay(bayIndex) {
+      if (bayIndex === null) {
+        fillForm(null);
+        renderDetails(null);
+        projectInfoContainer.innerHTML = '<p>Please select a bay to view details.</p>';
+        return;
+      }
+      const bayData = await api.getBay(bayIndex);
+      fillForm(bayData);
+      renderDetails(bayData);
+    }
+
+    addTodoButton.addEventListener('click', () => addTodoRow());
+    technicianCheckboxes.addEventListener('change', updateSelectedTechnicians);
+
+    baySelect.addEventListener('change', () => {
+      const bayIndex = baySelect.value ? parseInt(baySelect.value, 10) - 1 : null;
+      loadAndRenderBay(bayIndex).catch(err => console.error(err));
+    });
+
+    form.addEventListener('submit', async evt => {
+      evt.preventDefault();
+      if (!baySelect.value) {
+        alert('Please select a bay.');
+        return;
+      }
+      const { bayIndex, payload } = getFormData();
+      if (!payload.assignedTeam.length) {
+        alert('Please select at least one team member.');
+        return;
+      }
+
+      try {
+        const data = await api.allBays();
+        const conflicts = findConflicts(bayIndex, payload, data);
+
+        const save = async (pauseConflicts = false) => {
+          if (pauseConflicts) {
+            for (const c of conflicts) {
+              await api.saveBay(c.index, { ...c.bay, paused: true, pausedAt: new Date().toISOString() });
+            }
+          }
+          await api.saveBay(bayIndex, payload);
+          const refreshed = await api.allBays();
+          renderDetails(refreshed[bayIndex]);
+          alert('Bay delay details saved.');
+        };
+
+        if (conflicts.length) {
+          handleConflicts(conflicts, pause => save(pause));
+        } else {
+          await save(false);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Error saving bay data.');
+      }
+    });
+
+    document.getElementById('clear-bay').addEventListener('click', () => {
+      if (!baySelect.value) {
+        alert('Please select a bay to clear.');
+        return;
+      }
+      askPassword(async () => {
+        try {
+          const idx = parseInt(baySelect.value, 10) - 1;
+          await api.clearBay(idx);
+          fillForm(null);
+          renderDetails(null);
+          alert('Bay cleared.');
+        } catch (err) {
+          console.error(err);
+          alert('Error clearing bay.');
+        }
+      });
+    });
+
+    document.querySelectorAll('.modal-overlay').forEach(modal => {
+      modal.addEventListener('click', evt => {
+        if (evt.target === modal) hideModal(modal);
+      });
+    });
+
+    // Init
+    (async () => {
+      await loadTechnicians();
+      addTodoRow();
+      const data = await api.allBays();
+      const initialIndex = baySelect.value ? parseInt(baySelect.value, 10) - 1 : null;
+      if (initialIndex !== null) renderDetails(data[initialIndex]);
+    })().catch(err => console.error(err));
+  </script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

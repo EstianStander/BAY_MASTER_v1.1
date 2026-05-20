@@ -1,0 +1,550 @@
+/* Dedicated styling for visitor pages */
+
+.visitors-page .page-shell,
+.workshop-form-page .page-shell {
+  gap: 22px;
+}
+
+.visitors-page .page-header,
+.workshop-form-page .page-header {
+  background: linear-gradient(130deg, #fff2e8 0%, #ffffff 100%);
+  border: 1px solid #ffd9c4;
+  border-radius: 18px;
+  box-shadow: 0 14px 28px rgba(210, 96, 47, 0.12);
+}
+
+.visitors-page .page-title,
+.workshop-form-page .page-title {
+  color: #be4517;
+}
+
+.visitors-page .panel,
+.workshop-form-page .panel {
+  background: #fff;
+  border: 1px solid #ffd9c4;
+  border-radius: 18px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.07);
+}
+
+.visitors-page .panel {
+  padding: 20px;
+}
+
+.visitors-page .visitor-form-panel {
+  padding: 24px;
+  background: #fff8f3;
+}
+
+.visitors-page #visitor-form {
+  gap: 18px;
+}
+
+.visitors-page #visitor-form .form-section {
+  background: #fff;
+  border: 1px solid #ffd7c2;
+  border-left: 6px solid #f47f4a;
+  border-radius: 18px;
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.visitors-page #visitor-form .section-header-inline {
+  border-bottom: 1px dashed #f1b79b;
+  padding-bottom: 10px;
+}
+
+.visitors-page #visitor-form .section-header-inline h3 {
+  margin: 0;
+  color: #be4517;
+  font-size: 18px;
+}
+
+.visitors-page #visitor-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.visitors-page #visitor-form .form-group input,
+.visitors-page #visitor-form .form-group select,
+.visitors-page #visitor-form .form-group textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  border: 2px solid #ffd9c4;
+  border-radius: 10px;
+  background: #fffdfb;
+}
+
+.visitors-page #visitor-form .form-group {
+  min-width: 0;
+}
+
+.visitors-page #visitor-form .signature-block {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(220px, 0.55fr);
+  gap: 16px;
+  align-items: start;
+  background: #fffaf7;
+  border: 1px solid #f2c2ad;
+  border-radius: 14px;
+  padding: 14px;
+  overflow: hidden;
+}
+
+.visitors-page #visitor-form .signature-pad {
+  border: 2px solid #f2b08f;
+  background: #fffefc;
+}
+
+.visitors-page #visitor-form .signature-actions {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.visitors-page #visitor-form .signature-help {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.visitors-page #visitor-form .form-actions {
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.visitor-details-section {
+  overflow: hidden;
+}
+
+.visitor-details-grid {
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+}
+
+.visitor-details-grid .form-group,
+.visitor-details-section .form-group {
+  min-width: 0;
+}
+
+.visitor-details-grid .form-group input,
+.visitor-details-grid .form-group select,
+.visitor-details-grid .form-group textarea,
+.visitor-details-section .form-group input,
+.visitor-details-section .form-group select,
+.visitor-details-section .form-group textarea {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+}
+
+.visitor-signature-block {
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+  overflow: hidden;
+}
+
+.visitor-signature-block .signature-pad {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.visitor-signature-block .signature-pad canvas {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: clamp(130px, 24vw, 190px) !important;
+}
+
+.visitor-signature-block .signature-actions {
+  width: 100%;
+}
+
+.visitor-signature-block .signature-actions .btn-primary {
+  width: 100%;
+  justify-content: center;
+}
+
+.visitors-page #visitor-form-status {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #fff1e7;
+  border: 1px solid #ffd9c4;
+}
+
+.visitors-page .visitor-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.visitors-page .btn-primary,
+.workshop-form-page .btn-primary {
+  border-radius: 12px;
+}
+
+.visitors-page .table-card,
+.workshop-form-page .table-card {
+  border: 1px solid #f2c2ad;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fffaf7;
+}
+
+.visitors-page .visitor-table,
+.workshop-form-page .form-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #f2c2ad;
+}
+
+.visitors-page .visitor-table thead,
+.workshop-form-page .form-table thead {
+  background: #ffe6d6;
+  color: #9f3b12;
+}
+
+.visitors-page .visitor-table th,
+.visitors-page .visitor-table td,
+.workshop-form-page .form-table th,
+.workshop-form-page .form-table td {
+  padding: 12px 14px;
+  border-right: 1px solid #f2c2ad;
+  border-bottom: 1px solid #f2c2ad;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.visitors-page .visitor-table th:last-child,
+.visitors-page .visitor-table td:last-child,
+.workshop-form-page .form-table th:last-child,
+.workshop-form-page .form-table td:last-child {
+  border-right: none;
+}
+
+.visitors-page .visitor-table tbody tr:nth-child(even),
+.workshop-form-page .form-table tbody tr:nth-child(even) {
+  background: #fff;
+}
+
+.visitors-page .visitor-table tbody tr.clickable-row {
+  cursor: pointer;
+}
+
+.visitors-page .visitor-table tbody tr.clickable-row:hover,
+.visitors-page .visitor-table tbody tr.clickable-row:focus-visible {
+  background: #fff2e8;
+}
+
+.visitors-page .table-empty {
+  text-align: center;
+  color: #7a5545;
+}
+
+.workshop-form-page .visitor-form-panel {
+  padding: 24px;
+  background: #fff8f3;
+}
+
+.workshop-form-page .visitor-form {
+  gap: 20px;
+}
+
+.workshop-form-page .form-divider {
+  height: 2px;
+  background: linear-gradient(90deg, #ffd8c4 0%, #fff8f3 100%);
+  border-radius: 2px;
+  margin: 8px 0 2px;
+}
+
+.workshop-form-page .visitor-grid {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.workshop-form-page .form-section {
+  background: #fff;
+  border: 1px solid #ffd7c2;
+  border-left: 6px solid #f47f4a;
+  border-radius: 18px;
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.workshop-form-page .section-header-inline {
+  border-bottom: 1px dashed #f1b79b;
+  padding-bottom: 10px;
+}
+
+.workshop-form-page .section-header-inline h3 {
+  margin: 0 0 4px;
+  color: #be4517;
+  font-size: 18px;
+}
+
+.workshop-form-page .section-header-inline p {
+  margin: 0;
+  color: #694b3d;
+  font-size: 14px;
+}
+
+.workshop-form-page .table-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #5a3c2e;
+}
+
+.workshop-form-page .table-choice input[type="checkbox"],
+.workshop-form-page .table-choice input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #f15f32;
+}
+
+.workshop-form-page .ppe-mandatory {
+  font-weight: 800;
+  color: #9f3b12;
+}
+
+.workshop-form-page .ppe-training {
+  background: #fff4eb;
+  border: 1px solid #ffd8c4;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.workshop-form-page .declaration-box {
+  border: 1px solid #f2c2ad;
+  border-radius: 12px;
+  background: #fffaf7;
+  padding: 14px;
+  line-height: 1.6;
+}
+
+.workshop-form-page .rules-list {
+  border: 1px solid #f2c2ad;
+  border-radius: 12px;
+  background: #fffaf7;
+  padding: 14px 16px 14px 28px;
+  display: grid;
+  gap: 8px;
+}
+
+.workshop-form-page .form-group label {
+  font-weight: 700;
+  color: #4e3a30;
+}
+
+.workshop-form-page .form-group input,
+.workshop-form-page .form-group select,
+.workshop-form-page .form-group textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  border: 2px solid #ffd9c4;
+  border-radius: 10px;
+  background: #fffdfb;
+}
+
+.workshop-form-page .form-group {
+  min-width: 0;
+}
+
+.workshop-form-page .signature-pad {
+  border: 2px solid #f2b08f;
+  background: #fffefc;
+}
+
+.workshop-form-page .form-actions {
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.workshop-form-page .form-hint {
+  background: #fff1e7;
+  border: 1px solid #ffd9c4;
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: #8d4d2f;
+}
+
+@media (max-width: 900px) {
+  .visitors-page #visitor-form .signature-block,
+  .workshop-form-page .signature-block {
+    grid-template-columns: 1fr;
+  }
+
+  .visitors-page #visitor-form .signature-actions .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .visitors-page .visitor-form-panel {
+    padding: 18px;
+  }
+
+  .workshop-form-page .visitor-form-panel {
+    padding: 18px;
+  }
+
+  .visitors-page #visitor-form .form-section {
+    padding: 16px;
+    border-left-width: 4px;
+    overflow: hidden;
+  }
+
+  .workshop-form-page #visitor-induction-form .form-section {
+    padding: 16px;
+    border-left-width: 4px;
+    overflow: hidden;
+  }
+
+  .visitors-page #visitor-form .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .workshop-form-page #visitor-induction-form .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .visitors-page #visitor-form .form-group input,
+  .visitors-page #visitor-form .form-group select,
+  .visitors-page #visitor-form .form-group textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .workshop-form-page #visitor-induction-form .form-group input,
+  .workshop-form-page #visitor-induction-form .form-group select,
+  .workshop-form-page #visitor-induction-form .form-group textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .visitor-details-section {
+    padding: 14px !important;
+  }
+
+  .visitors-page #visitor-form .signature-block {
+    grid-template-columns: 1fr !important;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .workshop-form-page #visitor-induction-form .signature-block {
+    grid-template-columns: 1fr !important;
+    padding: 12px;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  .visitors-page #visitor-form .signature-pad canvas {
+    height: 165px;
+  }
+
+  .workshop-form-page #visitor-induction-form .signature-pad canvas {
+    height: 165px;
+  }
+}
+
+@media (max-width: 780px) {
+  .visitors-page .visitor-table,
+  .visitors-page .visitor-table thead,
+  .visitors-page .visitor-table tbody,
+  .visitors-page .visitor-table tr,
+  .visitors-page .visitor-table td,
+  .workshop-form-page .form-table,
+  .workshop-form-page .form-table thead,
+  .workshop-form-page .form-table tbody,
+  .workshop-form-page .form-table tr,
+  .workshop-form-page .form-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .visitors-page .visitor-table thead,
+  .workshop-form-page .form-table thead {
+    display: none;
+  }
+
+  .visitors-page .visitor-table tr,
+  .workshop-form-page .form-table tr {
+    border-bottom: 1px solid #f2c2ad;
+  }
+
+  .visitors-page .visitor-table td,
+  .workshop-form-page .form-table td {
+    border-right: none;
+    border-bottom: none;
+    padding: 8px 12px;
+  }
+
+  .workshop-form-page .form-section,
+  .visitors-page .panel {
+    padding: 14px;
+  }
+
+  .visitors-page #visitor-form .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .workshop-form-page #visitor-induction-form .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .visitors-page #visitor-form .form-section {
+    padding: 14px;
+    border-left-width: 4px;
+  }
+
+  .visitors-page #visitor-form .signature-block {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .workshop-form-page #visitor-induction-form .signature-block {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .visitors-page #visitor-form .signature-pad canvas {
+    height: 150px;
+  }
+
+  .workshop-form-page #visitor-induction-form .signature-pad canvas {
+    height: 150px;
+  }
+
+  .visitors-page #visitor-form .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .visitors-page #visitor-form .form-actions .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .visitors-page #visitor-form-status {
+    text-align: center;
+  }
+}

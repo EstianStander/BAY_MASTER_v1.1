@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BayMaster - Equipment Intake</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/Assets/abp-logo.svg" alt="ABP Induction logo">
+        <h1>BayMaster</h1>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      </div>
+      <nav class="nav-menu" id="primary-nav">
+        <ul>
+          <li>
+            <a href="/">
+              <span class="nav-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false">
+              <span class="nav-icon"><i class="fa-solid fa-warehouse" aria-hidden="true"></i></span>
+              <span>Bays</span>
+              <span class="chevron">▾</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/bay1">Bay 1</a></li>
+              <li><a href="/bay2">Bay 2</a></li>
+              <li><a href="/bay3">Bay 3</a></li>
+              <li><a href="/bay4">Bay 4</a></li>
+              <li><a href="/bay5">Bay 5</a></li>
+              <li><a href="/bay6">Bay 6</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/manage">
+              <span class="nav-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+              <span>Manage Bays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/equipment" class="active">
+              <span class="nav-icon"><i class="fa-solid fa-toolbox" aria-hidden="true"></i></span>
+              <span>Equipment</span>
+            </a>
+          </li>
+          <li>
+            <a href="/delays">
+              <span class="nav-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
+              <span>Delays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/finished-projects">
+              <span class="nav-icon"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></span>
+              <span>Finished Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="/job-costing">
+              <span class="nav-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
+              <span>Job Costing</span>
+            </a>
+          </li>
+          <li>
+            <a href="/preplanner">
+              <span class="nav-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span>
+              <span>Preplanner</span>
+            </a>
+          </li>
+          <li>
+            <a href="/mobile">
+              <span class="nav-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span>
+              <span>Mobile Upload</span>
+            </a>
+          </li>
+          <li>
+            <a href="/gallery">
+              <span class="nav-icon"><i class="fa-regular fa-images" aria-hidden="true"></i></span>
+              <span>Media Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a href="/visitors">
+              <span class="nav-icon"><i class="fa-regular fa-clipboard" aria-hidden="true"></i></span>
+              <span>Visitors Log</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-shell">
+        <div class="page-header">
+          <h1 class="page-title">
+            <i class="fas fa-toolbox"></i>
+            Workshop Equipment Intake
+          </h1>
+          <p class="page-subtitle">Book equipment into the workshop with photos and issue details.</p>
+        </div>
+
+        <section class="panel">
+          <h2 class="panel-title">
+            <i class="fas fa-inbox"></i>
+            Book Equipment Into Workshop
+          </h2>
+
+          <form id="equipment-form" enctype="multipart/form-data">
+            <div class="form-grid">
+              <div>
+                <label for="category" class="form-label">
+                  <i class="fas fa-list"></i>
+                  Category
+                </label>
+                <select id="category" name="category" class="form-select" required>
+                  <option value="">Choose a category</option>
+                  <option value="Spare Parts">Spare Parts</option>
+                  <option value="Coil Repair">Coil Repair</option>
+                  <option value="Retrofit">Retrofit</option>
+                  <option value="Other Repairs">Other Repairs</option>
+                  <option value="Other General">Other General</option>
+                </select>
+              </div>
+              <div>
+                <label for="equipmentId" class="form-label">
+                  <i class="fas fa-barcode"></i>
+                  Equipment ID
+                </label>
+                <input type="text" id="equipmentId" name="equipmentId" class="form-control" placeholder="e.g. INV-1024" required>
+              </div>
+              <div>
+                <label for="equipmentName" class="form-label">
+                  <i class="fas fa-tag"></i>
+                  Equipment Name
+                </label>
+                <input type="text" id="equipmentName" name="equipmentName" class="form-control" placeholder="e.g. Induction Coil" required>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div>
+                <label for="customerName" class="form-label">
+                  <i class="fas fa-user"></i>
+                  Customer Name
+                </label>
+                <input type="text" id="customerName" name="customerName" class="form-control" placeholder="e.g. A. Patel">
+              </div>
+              <div>
+                <label for="customerContact" class="form-label">
+                  <i class="fas fa-phone"></i>
+                  Customer Contact
+                </label>
+                <input type="text" id="customerContact" name="customerContact" class="form-control" placeholder="Phone or email">
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div>
+                <label for="issueDescription" class="form-label">
+                  <i class="fas fa-comment-dots"></i>
+                  What is wrong with it?
+                </label>
+                <textarea id="issueDescription" name="issueDescription" class="form-control" rows="5" placeholder="Describe the fault or reason the equipment is here" required></textarea>
+              </div>
+              <div>
+                <label class="form-label">
+                  <i class="fas fa-camera"></i>
+                  Add a photo on delivery (optional)
+                </label>
+                <label class="upload-dropzone" for="photo">
+                  <input type="file" id="photo" name="photos" accept="image/*" hidden multiple>
+                  <div class="upload-body">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <div>
+                      <p class="upload-title">Upload or take photos</p>
+                      <p class="upload-subtitle">PNG, JPG, or WebP up to 5MB each (max 10)</p>
+                    </div>
+                  </div>
+                  <div id="photo-preview-container" class="photo-preview-grid" style="display:none;"></div>
+                  <div id="photo-preview-list" class="photo-preview-list" style="display:none;"></div>
+                </label>
+              </div>
+            </div>
+
+            <div class="btn-row">
+              <button type="submit" class="btn-custom btn-primary">
+                <i class="fas fa-save"></i>
+                Book In Equipment
+              </button>
+              <button type="reset" class="btn-custom btn-ghost" id="form-reset">
+                <i class="fas fa-undo"></i>
+                Reset
+              </button>
+            </div>
+            <div id="form-status" class="form-status" role="status"></div>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel-title">
+            <i class="fas fa-warehouse"></i>
+            Equipment Currently in the Workshop
+          </h2>
+          <div id="equipment-list" class="finished-grid">
+            <div class="loading-card">Loading equipment...</div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel-title">
+            <i class="fas fa-list"></i>
+            Equipment Booking History
+          </h2>
+          <div id="equipment-history" class="history-list">
+            <div class="loading-card">Loading history...</div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="detail-modal" id="equipment-detail-modal" aria-hidden="true">
+    <div class="detail-modal-backdrop" data-close="equipment-detail"></div>
+    <div class="detail-modal-content" role="dialog" aria-modal="true">
+      <div class="detail-modal-header">
+        <div>
+          <h2 id="equipment-detail-title">Equipment</h2>
+          <p id="equipment-detail-subtitle"></p>
+        </div>
+        <button class="detail-close" data-close="equipment-detail">×</button>
+      </div>
+      <div class="detail-body">
+        <div class="detail-meta-grid" id="equipment-detail-meta"></div>
+        <div class="detail-section">
+          <h3>Issue Description</h3>
+          <p id="equipment-detail-issue"></p>
+        </div>
+        <div class="detail-section">
+          <h3>Photos</h3>
+          <div id="equipment-detail-photos" class="equipment-gallery"></div>
+        </div>
+        <div class="detail-actions">
+          <button class="btn-custom btn-danger" id="equipment-delete-btn">
+            <i class="fas fa-door-open"></i> Mark As Checked Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-modal" id="equipment-history-modal" aria-hidden="true">
+    <div class="detail-modal-backdrop" data-close="equipment-history"></div>
+    <div class="detail-modal-content" role="dialog" aria-modal="true">
+      <div class="detail-modal-header">
+        <div>
+          <h2 id="equipment-history-title">Equipment History</h2>
+          <p id="equipment-history-subtitle"></p>
+        </div>
+        <button class="detail-close" data-close="equipment-history">×</button>
+      </div>
+      <div class="detail-body" id="equipment-history-body"></div>
+    </div>
+  </div>
+
+  <script src="/js/equipment.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

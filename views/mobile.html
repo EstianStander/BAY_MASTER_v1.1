@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>BayMaster Mobile Uploads</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f2f5f7;
+      --surface: #ffffff;
+      --ink: #101114;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --accent-2: #1d4ed8;
+      --ring: rgba(15, 118, 110, 0.2);
+      --shadow: 0 16px 40px rgba(16, 17, 20, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffffff 0%, #eef2f4 55%, #e9edf1 100%);
+      color: var(--ink);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 0.9rem 1.1rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    header .nav-actions {
+      margin-left: auto;
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .nav-actions a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      color: var(--ink);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      display: inline-flex;
+      gap: 0.4rem;
+      align-items: center;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.2rem 1rem 2.5rem;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.2rem 0 0.7rem;
+      color: #0f172a;
+    }
+
+    .stack { display: grid; gap: 0.8rem; }
+
+    .card {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 0.9rem 1rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.9rem;
+      align-items: start;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.12);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .title { font-size: 1rem; font-weight: 700; margin: 0; }
+    .subtitle { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.85rem; }
+
+    .actions {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 10px;
+      padding: 0.5rem 0.85rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:active { transform: scale(0.98); }
+
+    .btn-photo { background: rgba(15, 118, 110, 0.12); color: var(--accent); }
+    .btn-video { background: rgba(29, 78, 216, 0.12); color: var(--accent-2); }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
+    }
+
+    .hidden-input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-top: 1.8rem;
+    }
+
+    .toast-container {
+      position: fixed;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      display: grid;
+      gap: 0.5rem;
+      z-index: 200;
+    }
+
+    .toast {
+      padding: 0.6rem 0.9rem;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.85rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+      background: #0f766e;
+    }
+
+    .toast.error { background: #b91c1c; }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.6);
+      z-index: 400;
+    }
+
+    .overlay-card {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 1.2rem 1.4rem;
+      border-radius: 16px;
+      width: min(90vw, 420px);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+    }
+
+    .progress-track {
+      height: 10px;
+      background: rgba(148, 163, 184, 0.2);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 0.6rem;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #34d399, #22c55e);
+      transition: width 0.2s ease;
+    }
+
+    @media (min-width: 900px) {
+      .container { padding-top: 2rem; }
+      .card { grid-template-columns: 140px 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <i class="fa-solid fa-camera"></i>
+    <h1>Mobile Media Uploads</h1>
+    <div class="nav-actions">
+      <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="/gallery"><i class="fa-regular fa-images"></i> Gallery</a>
+      <a href="/visitors"><i class="fa-regular fa-clipboard"></i> Visitors Log</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <div class="section-title"><i class="fa-solid fa-industry"></i> Bay Projects</div>
+      <div id="bayList" class="stack"></div>
+    </section>
+
+    <section>
+      <div class="section-title"><i class="fa-solid fa-user-gear"></i> Direct Projects</div>
+      <div id="directList" class="stack"></div>
+    </section>
+
+    <div class="footer-note">Capture photos or videos to upload under the correct project.</div>
+  </main>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="overlay" id="uploadOverlay" aria-hidden="true">
+    <div class="overlay-card">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <strong>Uploading Media</strong>
+        </div>
+        <span id="uploadPercent">0%</span>
+      </div>
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="uploadBar" class="progress-bar"></div>
+      </div>
+      <div id="uploadLabel" style="margin-top: 0.6rem; font-size: 0.9rem; color: #cbd5f5;">Starting upload...</div>
+    </div>
+  </div>
+
+  <script src="/js/mobile.js"></script>
+</body>
+</html>

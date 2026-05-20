@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BayMaster - Bay 3</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="foundry-screen" data-bay="3">
+  <div class="foundry-shell">
+    <header class="foundry-header">
+      <div class="foundry-header-left">
+        <p class="bay-tag">Bay 3</p>
+        <h1 id="projectName">Loading project...</h1>
+        <p id="assignedPerson" class="bay-meta"></p>
+      </div>
+      <a class="home-link" href="/">← Return Home</a>
+    </header>
+
+    <div class="foundry-grid">
+      <section class="summary-card">
+        <h2>Schedule</h2>
+        <p id="timerRange" class="bay-meta"></p>
+        <p id="pausedStatus" class="bay-meta"></p>
+        <p id="delayReason" class="bay-meta"></p>
+      </section>
+
+      <section id="movementBlock" class="movement-block" style="display:none;"></section>
+
+      <section class="tasks-card">
+        <h2>Tasks</h2>
+        <div id="tasks"></div>
+      </section>
+
+      <section class="timer-card">
+        <div class="timer" id="timer">--</div>
+        <div id="dateTime" class="timer-subtext"></div>
+      </section>
+    </div>
+  </div>
+
+  <script src="/js/bay-page.js"></script>
+</body>
+</html>

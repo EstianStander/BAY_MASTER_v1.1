@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BayMaster - Visitors Log</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/visitors.css">
+</head>
+<body class="visitors-page">
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/Assets/abp-logo.svg" alt="ABP Induction logo">
+        <h1>BayMaster</h1>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      </div>
+      <nav class="nav-menu" id="primary-nav">
+        <ul>
+          <li>
+            <a href="/">
+              <span class="nav-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false">
+              <span class="nav-icon"><i class="fa-solid fa-warehouse" aria-hidden="true"></i></span>
+              <span>Bays</span>
+              <span class="chevron">▾</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/bay1">Bay 1</a></li>
+              <li><a href="/bay2">Bay 2</a></li>
+              <li><a href="/bay3">Bay 3</a></li>
+              <li><a href="/bay4">Bay 4</a></li>
+              <li><a href="/bay5">Bay 5</a></li>
+              <li><a href="/bay6">Bay 6</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/manage">
+              <span class="nav-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+              <span>Manage Bays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/equipment">
+              <span class="nav-icon"><i class="fa-solid fa-toolbox" aria-hidden="true"></i></span>
+              <span>Equipment</span>
+            </a>
+          </li>
+          <li>
+            <a href="/delays">
+              <span class="nav-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
+              <span>Delays</span>
+            </a>
+          </li>
+          <li>
+            <a href="/finished-projects">
+              <span class="nav-icon"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></span>
+              <span>Finished Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="/job-costing">
+              <span class="nav-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
+              <span>Job Costing</span>
+            </a>
+          </li>
+          <li>
+            <a href="/preplanner">
+              <span class="nav-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span>
+              <span>Preplanner</span>
+            </a>
+          </li>
+          <li>
+            <a href="/mobile">
+              <span class="nav-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span>
+              <span>Mobile Upload</span>
+            </a>
+          </li>
+          <li>
+            <a href="/gallery">
+              <span class="nav-icon"><i class="fa-regular fa-images" aria-hidden="true"></i></span>
+              <span>Media Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a href="/visitors" class="active">
+              <span class="nav-icon"><i class="fa-regular fa-clipboard" aria-hidden="true"></i></span>
+              <span>Visitors Log</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-shell">
+        <div class="page-header">
+          <h1 class="page-title">
+            <i class="fas fa-clipboard-list"></i>
+            Visitors Log
+          </h1>
+          <p class="page-subtitle">Compact view of visitor check-ins and workshop inductions.</p>
+          <div class="visitor-actions">
+            <a class="btn-primary" href="/visitor-form">New Visitor Form</a>
+            <a class="btn-primary" href="/workshop-visitor-form">New Workshop Form</a>
+          </div>
+        </div>
+
+        <section class="panel">
+          <div class="panel-header-inline">
+            <h2 class="panel-title"><i class="fas fa-user"></i> Visitors</h2>
+            <span class="panel-meta" id="visitor-count">0 total</span>
+          </div>
+          <div class="table-card">
+            <table class="visitor-table" aria-label="Visitor log">
+              <thead>
+                <tr>
+                  <th>Signed</th>
+                  <th>Name Surname</th>
+                  <th>Company</th>
+                  <th>Contact</th>
+                  <th>ID / Passport</th>
+                </tr>
+              </thead>
+              <tbody id="visitor-table-body">
+                <tr>
+                  <td colspan="5" class="table-empty">Loading visitor records...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header-inline">
+            <h2 class="panel-title"><i class="fas fa-hard-hat"></i> Workshop Visitors</h2>
+            <span class="panel-meta" id="workshop-count">0 total</span>
+          </div>
+          <div class="table-card">
+            <table class="visitor-table" aria-label="Workshop visitor log">
+              <thead>
+                <tr>
+                  <th>Signed</th>
+                  <th>Company</th>
+                  <th>Contact</th>
+                  <th>Name Surname</th>
+                  <th>ID / Passport</th>
+                </tr>
+              </thead>
+              <tbody id="workshop-table-body">
+                <tr>
+                  <td colspan="5" class="table-empty">Loading workshop records...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/visitor-list.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

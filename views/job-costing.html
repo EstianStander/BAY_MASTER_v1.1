@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BayMaster - Job Costing</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/job-costing.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/Assets/abp-logo.svg" alt="ABP Induction logo">
+        <h1>BayMaster</h1>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      </div>
+      <nav class="nav-menu" id="primary-nav">
+        <ul>
+          <li><a href="/"><span class="nav-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span><span>Home</span></a></li>
+          <li class="nav-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false">
+              <span class="nav-icon"><i class="fa-solid fa-warehouse" aria-hidden="true"></i></span><span>Bays</span><span class="chevron">▾</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/bay1">Bay 1</a></li>
+              <li><a href="/bay2">Bay 2</a></li>
+              <li><a href="/bay3">Bay 3</a></li>
+              <li><a href="/bay4">Bay 4</a></li>
+              <li><a href="/bay5">Bay 5</a></li>
+              <li><a href="/bay6">Bay 6</a></li>
+            </ul>
+          </li>
+          <li><a href="/manage"><span class="nav-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span><span>Manage Bays</span></a></li>
+          <li><a href="/equipment"><span class="nav-icon"><i class="fa-solid fa-toolbox" aria-hidden="true"></i></span><span>Equipment</span></a></li>
+          <li><a href="/delays"><span class="nav-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span><span>Delays</span></a></li>
+          <li><a href="/finished-projects"><span class="nav-icon"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></span><span>Finished Projects</span></a></li>
+          <li><a href="/job-costing" class="active"><span class="nav-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span><span>Job Costing</span></a></li>
+          <li><a href="/preplanner"><span class="nav-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span><span>Preplanner</span></a></li>
+          <li><a href="/mobile"><span class="nav-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span><span>Mobile Upload</span></a></li>
+          <li><a href="/gallery"><span class="nav-icon"><i class="fa-regular fa-images" aria-hidden="true"></i></span><span>Media Gallery</span></a></li>
+          <li><a href="/visitors"><span class="nav-icon"><i class="fa-regular fa-clipboard" aria-hidden="true"></i></span><span>Visitors Log</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="job-page-header">
+        <div>
+          <h1><i class="fas fa-file-invoice-dollar"></i> Job Costing Sheet</h1>
+          <p>Linked to existing projects and saved to MongoDB.</p>
+        </div>
+        <div class="header-actions">
+          <button id="new-job" class="btn-primary"><i class="fas fa-plus"></i> New</button>
+          <button id="save-job" class="btn-primary"><i class="fas fa-save"></i> Save</button>
+          <button id="export-pdf" class="btn-primary" style="background:#f47f4a;border-color:#f47f4a;"><i class="fas fa-file-pdf"></i> Export PDF</button>
+          <button id="delete-job" class="btn-danger"><i class="fas fa-trash"></i> Delete</button>
+        </div>
+      </div>
+
+      <section class="job-card">
+        <div class="grid-2">
+          <div>
+            <label>Linked Project</label>
+            <select id="project-select"></select>
+          </div>
+          <div>
+            <label>Load Existing Sheet</label>
+            <select id="job-select"></select>
+          </div>
+        </div>
+      </section>
+
+      <section class="job-card">
+        <h2>Header</h2>
+        <div class="grid-4">
+          <div><label>Company</label><select id="companyName"><option value="">Select company</option></select></div>
+          <div><label>Customer Order No</label><input id="customerOrderNo" type="text"></div>
+          <div><label>Ticket No</label><input id="ticketNo" type="text"></div>
+          <div><label>Quote No</label><input id="quoteNo" type="text"></div>
+          <div><label>Job No</label><input id="jobNo" type="text"></div>
+          <div>
+            <label>Category</label>
+            <select id="category">
+              <option>Spare Parts</option>
+              <option>Coil Repair</option>
+              <option>Field Service</option>
+              <option>Retrofit</option>
+              <option>Other Repairs</option>
+              <option selected>Other General</option>
+            </select>
+          </div>
+          <div class="span-2"><label>Description</label><input id="description" type="text"></div>
+        </div>
+      </section>
+
+      <div class="grid-main">
+        <section class="job-card">
+          <h2>Labour (Actual - Fixed Rates, Excl)</h2>
+          <table class="sheet-table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Hours</th>
+                <th>Rate</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Normal Hours</td>
+                <td><input id="actualNormal" type="number" min="0" step="0.01" value="0"></td>
+                <td><span id="rateNormal">590.16</span></td>
+                <td><span id="normalTotal">R 0.00</span></td>
+              </tr>
+              <tr>
+                <td>Overtime @1.5</td>
+                <td><input id="actualOt15" type="number" min="0" step="0.01" value="0"></td>
+                <td><span id="rateOt15">885.24</span></td>
+                <td><span id="ot15Total">R 0.00</span></td>
+              </tr>
+              <tr>
+                <td>Overtime @2.0</td>
+                <td><input id="actualOt20" type="number" min="0" step="0.01" value="0"></td>
+                <td><span id="rateOt20">1180.32</span></td>
+                <td><span id="ot20Total">R 0.00</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Technicians Assigned</h2>
+          <div class="toolbar-row">
+            <select id="tech-select"></select>
+            <input id="tech-hours" type="number" min="0" step="0.01" placeholder="Hours">
+            <label class="inline-check"><input id="tech-main" type="checkbox"> Main Tech</label>
+            <button id="add-tech" class="btn-secondary">Add Technician</button>
+          </div>
+          <table class="sheet-table" id="tech-table">
+            <thead>
+              <tr>
+                <th>Technician</th>
+                <th>Hours</th>
+                <th>Main</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <h2>Materials (Excl)</h2>
+          <div class="toolbar-row">
+            <button id="add-material" class="btn-secondary">Add Row</button>
+            <input id="csv-file" type="file" accept=".csv">
+            <button id="import-csv" class="btn-secondary">Import CSV</button>
+          </div>
+          <table class="sheet-table" id="materials-table">
+            <thead>
+              <tr>
+                <th>Material</th>
+                <th>Description</th>
+                <th>Qty</th>
+                <th>Cost Price (Excl)</th>
+                <th>Total Cost (Excl)</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section class="job-card">
+          <h2>Summary (Excl)</h2>
+          <div class="summary-grid">
+            <label>Revenue</label><input id="revenue" type="number" min="0" step="0.01" value="0">
+            <label>Total Material Cost</label><div id="totalMaterialCost">R 0.00</div>
+            <label>Total Labour Cost</label><div id="totalLabourCost">R 0.00</div>
+            <label>Total Cost</label><div id="totalCost">R 0.00</div>
+            <label>Gross Profit</label><div id="grossProfit">R 0.00</div>
+            <label>Mark-up (%)</label><div id="markup">0.00%</div>
+            <label>Gross Margin (%)</label><div id="margin">0.00%</div>
+            <label>Cost in %</label><div id="costPct">0.00%</div>
+          </div>
+
+          <h2>Allocated Hours</h2>
+          <div class="summary-grid">
+            <label>Normal Hours</label><input id="allocNormal" type="number" min="0" step="0.01" value="0">
+            <label>Overtime @1.5</label><input id="allocOt15" type="number" min="0" step="0.01" value="0">
+            <label>Overtime @2.0</label><input id="allocOt20" type="number" min="0" step="0.01" value="0">
+          </div>
+
+          <h2>Variance</h2>
+          <div class="summary-grid">
+            <label>Over/Under (Hours)</label><div id="hoursVariance">0.00</div>
+            <label>Hr Cost Impact (Excl)</label><div id="hoursCostImpact">R 0.00</div>
+            <label>Tech vs Labour Hours</label><div id="techHoursWarning">Match</div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/job-costing.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+  <script src="/js/job-costing-pdf.js"></script>
+</body>
+</html>
