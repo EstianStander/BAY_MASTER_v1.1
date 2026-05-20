@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: baymaster
+    env: node
+    buildCommand: |
+      npm install --prefix ./preplanner-ui
+      npm run build --prefix ./preplanner-ui
+      npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: HOST
+        value: 0.0.0.0
+      - key: MONGODB_URI
+        value: mongodb+srv://estianstandergit_db_user:gSaZmEv47a6IuoyZ@baymaster.ftqcdzf.mongodb.net/
+      - key: JOBS_MONGODB_URI
+        value: mongodb+srv://stormfoxstudi_db_user:WjZLMVHXEpfSdtAU@inductotrackdb.q5ekljf.mongodb.net/
+      - key: JOBS_DB_NAME
+        value: inductotrackdb
+      - key: BCRYPT_ROUNDS
+        value: 10
+      - key: RATE_LIMIT_WINDOW_MS
+        value: 900000
+      - key: RATE_LIMIT_MAX_REQUESTS
+        value: 100
+      - key: LOG_LEVEL
+        value: info
+      - key: LOG_FILE_PATH
+        value: logs/app.log
+      # Sensitive variables to be set directly on Render for security
+      # - key: JWT_SECRET
+      # - key: JWT_EXPIRE
+      # - key: JWT_REFRESH_SECRET
+      # - key: JWT_REFRESH_EXPIRE
+      # - key: CORS_ORIGIN
